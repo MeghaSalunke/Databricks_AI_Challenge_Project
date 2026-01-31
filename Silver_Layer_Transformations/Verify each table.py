@@ -4,14 +4,14 @@
 
 # COMMAND ----------
 
-# MAGIC %sql
-# MAGIC SELECT * FROM default.er_wait_time LIMIT 10;
+ %sql
+SELECT * FROM default.er_wait_time LIMIT 10;
 # MAGIC
 
 # COMMAND ----------
 
-# MAGIC %sql
-# MAGIC ALTER TABLE default.er_wait_time_dataset RENAME TO default.bronze_er_wait_time;
+%sql
+ALTER TABLE default.er_wait_time_dataset RENAME TO default.bronze_er_wait_time;
 # MAGIC
 
 # COMMAND ----------
@@ -21,37 +21,36 @@
 
 # COMMAND ----------
 
-# MAGIC %sql
-# MAGIC SELECT * FROM default.admission_data LIMIT 10;
+ %sql
+ SELECT * FROM default.admission_data LIMIT 10;
 
 # COMMAND ----------
-
-# MAGIC %sql
+ %sql
 # MAGIC CREATE OR REPLACE TABLE default.bronze_admission_data
-# MAGIC AS
-# MAGIC SELECT
-# MAGIC   `MRD No.`                         AS patient_id,
-# MAGIC   `D.O.A`                           AS admission_date,
-# MAGIC   `D.O.D`                           AS discharge_date,
-# MAGIC   `TYPE OF ADMISSION-EMERGENCY/OPD` AS admission_type,
-# MAGIC   `month year`                      AS month_year,
-# MAGIC   `DURATION OF STAY`                AS length_of_stay,
-# MAGIC   `OUTCOME`                         AS outcome,
-# MAGIC   current_date()                    AS ingestion_date,
-# MAGIC   'HDHI Admission data.csv'         AS source_file
+ AS
+ SELECT
+`MRD No.`                         AS patient_id,
+`D.O.A`                           AS admission_date,
+`D.O.D`                           AS discharge_date,
+`TYPE OF ADMISSION-EMERGENCY/OPD` AS admission_type,
+`month year`                      AS month_year,
+`DURATION OF STAY`                AS length_of_stay,
+ `OUTCOME`                         AS outcome,
+ current_date()                    AS ingestion_date,
+#'HDHI Admission data.csv'         AS source_file
 # MAGIC FROM default.admission_data;
 # MAGIC
 
 # COMMAND ----------
 
-# MAGIC %sql
-# MAGIC SELECT * FROM default.bronze_admission_data LIMIT 10;
+%sql
+SELECT * FROM default.bronze_admission_data LIMIT 10;
 # MAGIC
 
 # COMMAND ----------
 
-# MAGIC %sql
-# MAGIC DROP TABLE IF EXISTS default.admission_data;
+%sql
+DROP TABLE IF EXISTS default.admission_data;
 
 # COMMAND ----------
 
@@ -61,8 +60,8 @@
 
 # COMMAND ----------
 
-# MAGIC %sql
-# MAGIC SELECT * FROM default.emergency_room_patient_forecast LIMIT 10;
+%sql
+SELECT * FROM default.emergency_room_patient_forecast LIMIT 10;
 
 # COMMAND ----------
 
